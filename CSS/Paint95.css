@@ -18,17 +18,25 @@
 .green{
 
     background-color: green;
-
 }
 .purple{
-    background-color: purple;
+     background-color: purple;
+ }
+.white{
+    background-color: white;
 }
-
-
-
+.pink{
+    background-color: deeppink;
+}
 .colorPalet div{
     height:100px;
     display: inline-block;
     width:100px;
     border: 1px black solid;
+}
+
+.buttonEraseStyle {
+    margin-left: 7%;
+    color: red;
+    font-weight: bold;
 }

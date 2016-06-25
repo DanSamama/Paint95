@@ -1,14 +1,18 @@
 /**
  * Created by itc_user on 6/22/2016.
  */
-var defaultSize = 50;
+var defaultSize = 40;
 var couleur = "purple";
-var colorAttribute = ["blue","red","yellow","green","white"];
+var eraseColor = "white";
+var colorAttribute = ["blue","red","yellow","green","pink"];
 
 
 var ChangeColor = function(clickEvent){
     clickEvent.target.className = "cubeStyle " + couleur;
 };
+var eraserTool = function(clickEvent){
+    clickEvent.target.className = "cubeStyle " + eraseColor;
+}
 
 var colorTrade = function(clickEvent){
     couleur = clickEvent.target.className;
@@ -20,12 +24,18 @@ var changeSizeCanvas = function(clickEvent){
     document.getElementById("bestCanvas").remove();
     createCanvas();
 };
+
+var eraseCanvas = function(clickEvent){
+    document.getElementById("bestCanvas").remove();
+    createCanvas();
+
+};
+
 var createCanvas = function(){
     var globalBox = document.getElementById("bestGlobalBox");
     var canvas = document.createElement('div');
     canvas.id = "bestCanvas";
     globalBox.appendChild(canvas);
-
 
     for(var i=0;i<defaultSize;i++){
         var columnCube = document.createElement('div');
@@ -36,7 +46,8 @@ var createCanvas = function(){
             cube.className = "cubeStyle";
             columnCube.appendChild(cube);
             cube.addEventListener('click',ChangeColor);
-            cube.addEventListener('mouseover',ChangeColor);
+            cube.addEventListener('dblclick',eraserTool);
+            // cube.addEventListener('mouseover',ChangeColor);
 
 
         }
@@ -72,14 +83,17 @@ window.onload = function(){
 
     buttonField.addEventListener('click',changeSizeCanvas);
 
-
-
-// <label for="ingredient">Your Answer</label>
-// <input type="text" id="ingredient" placeholder="ingredient"/>
-
-
-
+    var buttonErase = document.createElement('button');
+    buttonErase.className = "buttonEraseStyle";
+    buttonErase.textContent = "Erase the canvas"
+    inputField.appendChild(buttonErase);
+    buttonErase.addEventListener('click',eraseCanvas);
+    
 }
+
+
+
+
 
 
 
